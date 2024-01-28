@@ -51,3 +51,10 @@ def update_power_description(id):
     db.session.commit()
     # Return the updated power details
     return jsonify({'id': power.id, 'description': power.description})
+ #Create a new hero_power relationship using POST method
+@app.route('/hero_powers', methods=['POST'])
+def create_hero_power():
+    data = request.get_json()
+    hero_id = data.get('hero_id')
+    power_id = data.get('power_id')
+    strength = data.get('strength')
