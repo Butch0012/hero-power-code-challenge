@@ -21,3 +21,6 @@ def get_heroes():
 @app.route('/heroes/<int:id>', methods=['GET'])
 def get_hero_by_id(id):
     hero = Hero.query.get_or_404(id)
+    # Create a dictionary with hero details including id, name, and associated powers
+    hero_data = {'id': hero.id, 'name': hero.name, 'powers': [hp.power.description for hp in hero.powers]}
+    return jsonify(hero_data)
