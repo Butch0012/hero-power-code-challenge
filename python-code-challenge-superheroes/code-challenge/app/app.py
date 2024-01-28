@@ -29,3 +29,6 @@ def get_hero_by_id(id):
 @app.route('/powers', methods=['GET'])
 def get_powers():
     powers = Power.query.all()
+    # Create a list of powers with their id, description, and associated heroes
+    powers_data = [{'id': power.id, 'description': power.description, 'heroes': [hp.hero.name for hp in power.heroes]} for power in powers]
+    return jsonify(powers_data)
