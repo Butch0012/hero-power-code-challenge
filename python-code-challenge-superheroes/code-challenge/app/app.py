@@ -65,3 +65,5 @@ def create_hero_power():
     hero_power = HeroPower(hero=hero, power=power, strength=strength)
     db.session.add(hero_power)
     db.session.commit()
+    # Return the details of the created hero_power relationship
+    return jsonify({'id': hero_power.id, 'hero_id': hero_power.hero_id, 'power_id': hero_power.power_id, 'strength': hero_power.strength})
