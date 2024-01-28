@@ -13,4 +13,11 @@ class Hero(db.Model):
 class Power(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(100), nullable=False, unique=True)
-    heroes = db.relationship('HeroPower', backref='power', lazy=True)    
+    heroes = db.relationship('HeroPower', backref='power', lazy=True)  
+
+# Define the HeroPower model with a primary key, foreign keys to Hero and Power, and a strength attribute
+class HeroPower(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hero_id = db.Column(db.Integer, db.ForeignKey('hero.id'), nullable=False)
+    power_id = db.Column(db.Integer, db.ForeignKey('power.id'), nullable=False)
+    strength = db.Column(db.Integer, nullable=False)
