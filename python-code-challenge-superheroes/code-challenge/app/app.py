@@ -40,3 +40,9 @@ def get_power_by_id(id):
     # Create a dictionary with power details including id, description, and associated heroes
     power_data = {'id': power.id, 'description': power.description, 'heroes': [hp.hero.name for hp in power.heroes]}
     return jsonify(power_data)
+
+# Update power description by ID using PATCH method
+@app.route('/powers/<int:id>', methods=['PATCH'])
+def update_power_description(id):
+    power = Power.query.get_or_404(id)
+    data = request.get_json()
