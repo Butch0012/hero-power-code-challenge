@@ -46,3 +46,6 @@ def get_power_by_id(id):
 def update_power_description(id):
     power = Power.query.get_or_404(id)
     data = request.get_json()
+    # Update the power description with the provided value or keep the existing one
+    power.description = data.get('description', power.description)
+    db.session.commit()
