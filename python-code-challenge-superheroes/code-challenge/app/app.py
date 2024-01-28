@@ -61,3 +61,7 @@ def create_hero_power():
      # Get the hero and power objects from the database
     hero = Hero.query.get_or_404(hero_id)
     power = Power.query.get_or_404(power_id)
+    # Create a new HeroPower relationship and add it to the database
+    hero_power = HeroPower(hero=hero, power=power, strength=strength)
+    db.session.add(hero_power)
+    db.session.commit()
