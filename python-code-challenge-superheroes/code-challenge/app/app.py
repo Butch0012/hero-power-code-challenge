@@ -67,3 +67,7 @@ def create_hero_power():
     db.session.commit()
     # Return the details of the created hero_power relationship
     return jsonify({'id': hero_power.id, 'hero_id': hero_power.hero_id, 'power_id': hero_power.power_id, 'strength': hero_power.strength})
+
+# Run the Flask app
+if __name__ == '__main__':
+    app.run(debug=True)
