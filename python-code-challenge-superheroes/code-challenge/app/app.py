@@ -58,3 +58,6 @@ def create_hero_power():
     hero_id = data.get('hero_id')
     power_id = data.get('power_id')
     strength = data.get('strength')
+     # Get the hero and power objects from the database
+    hero = Hero.query.get_or_404(hero_id)
+    power = Power.query.get_or_404(power_id)
