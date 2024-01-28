@@ -37,3 +37,6 @@ def get_powers():
 @app.route('/powers/<int:id>', methods=['GET'])
 def get_power_by_id(id):
     power = Power.query.get_or_404(id)
+    # Create a dictionary with power details including id, description, and associated heroes
+    power_data = {'id': power.id, 'description': power.description, 'heroes': [hp.hero.name for hp in power.heroes]}
+    return jsonify(power_data)
